@@ -5,7 +5,7 @@ var StickyPopup = {
     parentId: null,
     show: function(url){
         if(StickyPopup.popupExists())
-            popup_window = window.open(url, 'Sticky_Popup', 'height=400,width=600');
+            popup_window = window.open(url, 'Sticky_Popup', 'height=400,width=600,top=100');
         popup_window.focus();
         StickyPopup.addUnloadEvent();
     },
