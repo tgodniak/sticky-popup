@@ -1,4 +1,4 @@
-var radio_popup_window;
+var popup_window;
 
 var StickyPopup = {
     timerId:  null,
@@ -36,7 +36,7 @@ var StickyPopup = {
                     window.opener.StickyPopup.addUnloadEvent();
                     StickyPopup.saveReference();
                 }
-            }, 500);
+            }, 100);
     },
     redirectParent: function(url){
         window.opener.location = url;

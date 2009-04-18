@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sticky Popup</title>
+    <script type="text/javascript" src="sticky_popup.js"></script>
+  </head>
+  <body>
+    <div style="padding:20px;background-color:black;">
+      <a href="#" onclick="window.close();">Close Popup</a>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.onload = function() {
+      StickyPopup.saveReference();
+      alert('ddd');
+    }
+  </script>
+</html>
