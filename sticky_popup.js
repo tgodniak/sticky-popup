@@ -1,22 +1,21 @@
-var popup_window;
-
 var StickyPopup = {
+    popup:    null,
     timerId:  null,
     parentId: null,
     show: function(url){
         if(StickyPopup.popupExists())
-            popup_window = window.open(url, 'Sticky_Popup', 'height=400,width=600,top=100');
-        popup_window.focus();
+            StickyPopup.popup = window.open(url, 'Sticky_Popup', 'height=400,width=600,top=100');
+        StickyPopup.popup.focus();
         StickyPopup.addUnloadEvent();
     },
     popupExists: function(){
-        return (typeof(popup_window) == "undefined" || popup_window.closed)
+        return (StickyPopup.popup == null || StickyPopup.popup.closed)
     },
     addUnloadEvent: function(){
         if(window.onunload == null) {
             window.onunload = function(){
                 if(!StickyPopup.popupExists()) {
-                    popup_window.StickyPopup.addReference();
+                    StickyPopup.popup.StickyPopup.addReference();
                 }
             }
             StickyPopup.parentId = StickyPopup.generateRandomString();
@@ -29,7 +28,7 @@ var StickyPopup = {
         var parentId = window.opener.StickyPopup.parentId;
         StickyPopup.timerId = setInterval(function() {
                 if(StickyPopup.parentId == parentId) {
-                    window.opener.popup_window = window;
+                    window.opener.StickyPopup.popup = window;
                     parentId = window.opener.StickyPopup.parentId;
                 } else {
                     clearInterval(StickyPopup.timerId);
