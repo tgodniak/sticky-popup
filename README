@@ -1,3 +1,36 @@
-StickyPopup
+StickyPopup v1.0
 
-Popup Window which will always keep reference to Opener (ever if reload)
+Description:
+  * Popup Window which will always keep reference to Opener (ever if reload)
+  * This js will help to always recall previously opened popup even if you navigate between pages on site.
+  * This is usefull if you want to show popup without reloading it.
+
+Browsers Compatibility:
+  * Firefox 3 [not tested under < 3]
+  * Safari 3+ [under Mac],
+  * IE 5.5+ [not tested under 8]
+
+Usage:
+  * Create parent page and popup,
+
+  * Include to both sticky_popup.js and to any other pages on your site
+    <script type="text/javascript" src="sticky_popup.js"></script>
+
+  * Add in popup following js code
+    <script type="text/javascript">
+      window.onload = function() {
+        StickyPopup.saveReference();
+      }
+    </script>
+
+  * Call popup on parent page or any other pages on your site as follow
+    <a href="#" onclick="StickyPopup.show('popup_page_url');return false;">Open Sticky Popup</a>
+
+  * That's all you need
+
+Know issues:
+  * not working under Opera browser [Opera 9.64],
+  * focus() function not working properly - Chrome and Safari 2 [under Windows],
+
+Comments:
+  * http://github.com/tgodniak
