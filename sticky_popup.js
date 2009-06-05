@@ -25,17 +25,17 @@ var StickyPopup = {
         StickyPopup.parentId = window.opener.StickyPopup.parentId;
     },
     addReference: function(){
-        var parentId = window.opener.StickyPopup.parentId;
-        StickyPopup.timerId = setInterval(function() {
-                if(StickyPopup.parentId == parentId) {
-                    window.opener.StickyPopup.popup = window;
-                    parentId = window.opener.StickyPopup.parentId;
-                } else {
-                    clearInterval(StickyPopup.timerId);
-                    window.opener.StickyPopup.addUnloadEvent();
-                    StickyPopup.saveReference();
-                }
-            }, 100);
+	StickyPopup.timerId = setInterval(function() {
+		if(window.opener.StickyPopup){
+		    var parentId = window.opener.StickyPopup.parentId;
+		    if(StickyPopup.parentId != parentId) {
+			clearInterval(StickyPopup.timerId);
+			window.opener.StickyPopup.popup = window;
+			window.opener.StickyPopup.addUnloadEvent();
+			StickyPopup.saveReference();
+		    }
+		}
+	    }, 100);
     },
     redirectParent: function(url){
         window.opener.location = url;
